@@ -17,21 +17,21 @@ function kgp {
 }
 
 function kgpw {
-    kc get pods -w
+    k get pods -w
 }
 
 function kl {
-    kc logs $*
+    k logs $*
 }
 
 function klf {
-    kc logs -f $*
+    k logs -f $*
 }
 
 function ke {
-    kc exec -it $*
+    k exec -it $*
 }
 
 function ks {
-    kc scale deployment $0 --replicas=$1
+    k scale deployment $0 --replicas=$1
 }
