@@ -1,51 +1,37 @@
 alias start=open
 
-function kcns {
-  export namespace="$1"
+function kns {
+  kubectl config set-context --current --namespace="$1"
 }
 
-function ensure_namespace() {
-  if [ -z "$namespace" ]; then
-    echo "namespace not yet set"
-    exit 0
-  else
-    exit 1
-  fi
+function k {
+  kubectl $*
 }
 
-function kc {
-  ensure_namespace()
-  if [ $? -eq 0 ]; then
-     return
-  fi
-
-  kubectl -n $namespace $*
+function kgd {
+    k get deployment
 }
 
-function kcgd {
-    kc get deployment
+function kgp {
+    k get pods
 }
 
-function kcgp {
-    kc get pods
-}
-
-function kcgpw {
+function kgpw {
     kc get pods -w
 }
 
-function kcl {
+function kl {
     kc logs $*
 }
 
-function kclf {
+function klf {
     kc logs -f $*
 }
 
-function kce {
+function ke {
     kc exec -it $*
 }
 
-function kcs {
+function ks {
     kc scale deployment $0 --replicas=$1
 }
